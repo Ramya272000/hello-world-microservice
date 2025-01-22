@@ -30,5 +30,8 @@ jobs:
              docker push ramyavandu/hello-world-microservice:latest
 
       - name: Test Docker Image Locally
-        run: docker run -d -p 8090:5000 ramyavandu/hello-world-microservice:latest &&
-             curl -f http://localhost:8090
+        run: |
+          docker run -d -p 8090:5000 ramyavandu/hello-world-microservice:latest
+          sleep 10  # Wait for the container to initialize
+          curl -f http://localhost:8090
+           
