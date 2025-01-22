@@ -26,9 +26,9 @@ jobs:
         run: docker build -t hello-world-microservice .
 
       - name: Push Docker Image
-        run: docker tag hello-world-microservice ${{ secrets.DOCKER_USERNAME }}/hello-world-microservice:latest &&
-             docker push ${{ secrets.DOCKER_USERNAME }}/hello-world-microservice:latest
+        run: docker tag hello-world-microservice ramyavandu/hello-world-microservice:latest &&
+             docker push ramyavandu/hello-world-microservice:latest
 
       - name: Test Docker Image Locally
-        run: docker run -d -p 8090:5000 ${{ secrets.DOCKER_USERNAME }}/hello-world-microservice:latest &&
+        run: docker run -d -p 8090:5000 ramyavandu/hello-world-microservice:latest &&
              curl -f http://localhost:8090
